@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/* GLOBAL APP */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0 !important;
+}
+
+.body-app {
+  display: flex;
+  flex-direction: row;
+  height: 87vh;
+}
+
+.container-app {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* FILTERS ON TAG */
+
+.container-filters {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  align-items: center;
+  overflow-y: scroll;
+  flex: 1;
+  gap: 30px;
+  height: 100%;
+  border-right: 2px solid lightgoldenrodyellow;
+  flex-wrap: nowrap !important;
+}
+
+.tag {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* PUBLICATIONS */
+
+.container-publications {
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 5;
+  padding: 35px;
+  gap: 30px;
+}
+
+.publication {
+  position: relative;
+  width: 300px;
+  height: 180px;
+  background: url("../images/pubImage.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.publication > p {
+  justify-self: center;
+  align-self: center;
+}
+
+.publication__tag {
+  position: absolute;
+  top: 5px;
+  left: 15px;
+
+  background: rgba(240, 230, 140, 0.3);
+  padding: 3px;
+  font-size: x-small;
+}
+
+.publishedBy {
+  position: absolute;
+  font-size: x-small;
+  bottom: 5px;
+  right: 15px;
+}
+
+/* FOOTER */
+
+.footer {
+    display: flex;
+  height: 40px;
+  width: 100%;
+  background-color: #198754;
+  color: white;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer > p {
+  margin-top: 6px;
+}
+
+/* update bootstrap */
+.input-group {
+  flex-wrap: nowrap;
+}

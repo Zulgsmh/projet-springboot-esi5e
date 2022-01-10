@@ -1,0 +1,28 @@
+server:
+  servlet:
+    session:
+      timeout: 120s
+  error:
+    include-message: always
+    include-binding-errors: always
+
+application.security.refreshToken.secret : refreshSecret
+application.security.token.secret: secret
+
+spring:
+  thymeleaf:
+    cache: false
+  ressources:
+    static-locations: file:src/main/ressources/static/
+    cache-period: 0
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate.ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/dbProjectSpringBoot?useSSL=false&serverTimezone=UTC
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password: root
+
+
