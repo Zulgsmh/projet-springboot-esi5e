@@ -31,6 +31,10 @@ public class TraductionService {
         }
     }
 
+    public List<Traduction> getAllTraductionsByIdPublication(long id) {
+        return traductionRepository.findAllByPublication_Id(id);
+    }
+
     public void deleteOne(long id){
         traductionRepository.deleteById(id);
     }

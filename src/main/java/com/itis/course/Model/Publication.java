@@ -44,7 +44,7 @@ public class Publication {
     @JoinColumn(name = "validate_by_id")
     private Users validateBy; //must have specialist role
 
-    @OneToMany
+    @OneToMany(mappedBy = "publication", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Traduction> traductionList;
 
     private String imageAssociated;

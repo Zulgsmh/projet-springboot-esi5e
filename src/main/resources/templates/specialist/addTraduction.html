@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add - Traduction</title>
+    <section class="header" th:replace="reusable/bootstrapImport::headerFragment"></section>
+</head>
+<section class="navbar" th:replace="reusable/navbar::navbarFragment"></section>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form th:action="@{/specialist/traduction/add}" method="post" th:object="${traductionForm}">
+                <input type="hidden" name="id" th:field="*{id}">
+                <div class="form-group">
+                    <label for="langue">Langue</label>
+                    <select class="form-control selectpicker" th:field="*{langue}" id="langue" required>
+                        <option value="">Veuillez selectionner une langue</option>
+                        <option th:each="langue : ${langues}" th:value="${langue.id}" th:text="${langue.langue}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="publication">Publication</label>
+                    <select class="form-control selectpicker" th:field="*{publication}" id="publication" required>
+                        <option value="">Veuillez selectionner la publication</option>
+                        <option th:each="p : ${publications}" th:value="${p.id}" th:text="${p.texte}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="text">Traduction</label>
+                    <input id="text" type="text" class="form-control" required th:field="*{text}" name="text">
+                </div>
+                <button class="btn btn-primary mt-10" type="submit">Ajouter la traduction</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

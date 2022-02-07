@@ -1,14 +1,19 @@
 package com.itis.course.Controller;
 
 import com.itis.course.Model.Langue;
+import com.itis.course.Model.Publication;
 import com.itis.course.Model.PublicationType;
+import com.itis.course.Model.Traduction;
 import com.itis.course.Service.LangueService;
+import com.itis.course.Service.PublicationService;
 import com.itis.course.Service.PublicationTypeService;
+import com.itis.course.Service.TraductionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -19,6 +24,12 @@ public class AdminController {
 
     @Autowired
     LangueService langueService;
+
+    @Autowired
+    PublicationService publicationService;
+
+    @Autowired
+    TraductionService traductionService;
 
     //global admin
     @GetMapping("/admin")
@@ -100,6 +111,25 @@ public class AdminController {
             return "admin/addAdminLangue";
         }
         return "404";
+    }
+
+    //-----------
+    //Traductions
+
+    @GetMapping("/specialist/traduction/add")
+    public String createNewTraduction(Model model) {
+        List<Publication> publicationList = publicationService.getAll();
+        List<Langue> langueList = langueService.listAll();
+        model.addAttribute("langues", langueList);
+        model.addAttribute("publications", publicationList);
+        model.addAttribute("traductionForm", new Traduction());
+        return "specialist/addTraduction";
+    }
+
+    @PostMapping("/specialist/traduction/add")
+    public String addTraduction(@ModelAttribute("traductionForm") Traduction traductionForm){
+        traductionService.create(traductionForm);
+        return "redirect:/";
     }
 
 

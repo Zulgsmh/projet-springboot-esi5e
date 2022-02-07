@@ -6,10 +6,7 @@ import com.itis.course.Model.Publication;
 import com.itis.course.Model.PublicationType;
 import com.itis.course.Model.Users;
 import com.itis.course.ModelForm.PublicationForm;
-import com.itis.course.Service.LangueService;
-import com.itis.course.Service.PublicationService;
-import com.itis.course.Service.PublicationTypeService;
-import com.itis.course.Service.UserService;
+import com.itis.course.Service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -42,7 +39,7 @@ public class PublicationController {
     PublicationService publicationService;
 
     @Autowired
-    UserService userService;
+    TraductionService traductionService;
 
     @Autowired
     LangueService langueService;
@@ -104,6 +101,7 @@ public class PublicationController {
     @RequestMapping("/publication/details/{id}")
     public String getDetailsPublication(@PathVariable("id") long id, Model model) {
         model.addAttribute("publication",  publicationService.getOne(id));
+        model.addAttribute("traductions", traductionService.getAllTraductionsByIdPublication(id));
         //fetch all traduction with this id
         return "/home/publicationDetails";
     }

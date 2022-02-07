@@ -29,11 +29,9 @@
         </div>
         <div class="col col-traductions">
             <h3>Traductions</h3>
-            <div class="card-traduction">
-                <h5>Langue </h5>
-                <p>Traduction</p>
-                <p>Sens</p>
-                <p>Traducteur</p>
+            <div class="card-traduction" th:each="traduction : ${traductions}">
+                <h5 th:text="${traduction.langue.langue}"></h5>
+                <p th:text="${traduction.text}">Traduction</p>
             </div>
         </div>
     </div>
