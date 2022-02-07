@@ -13,6 +13,7 @@
         <div class="col">
             <form th:action="@{/specialist/traduction/add}" method="post" th:object="${traductionForm}">
                 <input type="hidden" name="id" th:field="*{id}">
+                <input type="hidden" name="translateBy" th:field="*{translateBy}">
                 <div class="form-group">
                     <label for="langue">Langue</label>
                     <select class="form-control selectpicker" th:field="*{langue}" id="langue" required>

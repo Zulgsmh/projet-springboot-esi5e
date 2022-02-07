@@ -1,14 +1,12 @@
 package com.itis.course.Controller;
 
-import com.itis.course.Model.Langue;
-import com.itis.course.Model.Publication;
-import com.itis.course.Model.PublicationType;
-import com.itis.course.Model.Traduction;
+import com.itis.course.Model.*;
 import com.itis.course.Service.LangueService;
 import com.itis.course.Service.PublicationService;
 import com.itis.course.Service.PublicationTypeService;
 import com.itis.course.Service.TraductionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -127,7 +125,8 @@ public class AdminController {
     }
 
     @PostMapping("/specialist/traduction/add")
-    public String addTraduction(@ModelAttribute("traductionForm") Traduction traductionForm){
+    public String addTraduction(@ModelAttribute("traductionForm") Traduction traductionForm, @AuthenticationPrincipal Users user){
+        traductionForm.setTranslateBy(user.getFullName());
         traductionService.create(traductionForm);
         return "redirect:/";
     }

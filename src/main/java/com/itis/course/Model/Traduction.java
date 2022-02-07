@@ -9,7 +9,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Traduction")
-@Slf4j
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,6 +18,8 @@ public class Traduction {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     private String text;
+
+    private String translateBy;
 
     @OneToOne
     @JoinColumn(name = "langue_id")
