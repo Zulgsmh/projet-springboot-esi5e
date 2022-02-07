@@ -20,11 +20,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/users")
+    @RequestMapping("/admin/users")
     public String allUsers(Model model){
         List<Users> allUsers = userService.retrieveAll();
         model.addAttribute("users", allUsers);
-        return "/user/allUsers";
+        return "/admin/allUsers";
     }
 
     @RequestMapping("/deleteUser/{id}")

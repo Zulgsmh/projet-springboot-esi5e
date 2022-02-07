@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-</head>
+<section class="header" th:replace="reusable/bootstrapImport::headerFragment"></section>
+<section class="navbar" th:replace="reusable/navbar::navbarFragment"></section>
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="card">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit">Créer mon compte</button>
+                <button class="btn btn-primary" type="submit">Créer mon compte</button>
             </form>
         </div>
         <!-- /.form-box -->

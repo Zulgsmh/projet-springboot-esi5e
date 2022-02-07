@@ -1,10 +1,6 @@
 package com.itis.course.Service;
 
-import com.itis.course.Enum.Role;
-import com.itis.course.Enum.TypePublication;
-import com.itis.course.Model.Langue;
-import com.itis.course.Model.Publication;
-import com.itis.course.Model.Users;
+
 import com.itis.course.Repository.LangueRepository;
 import com.itis.course.Repository.PublicationRepository;
 import com.itis.course.Repository.UserRepository;
@@ -14,9 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+
 
 @Service
 @Slf4j
@@ -41,6 +35,7 @@ public class DbInit implements CommandLineRunner {
         //langueRepository.deleteAll();
         //publicationRepository.deleteAll();
 
+        /*
 
 
         Users user = new Users();
@@ -98,6 +93,8 @@ public class DbInit implements CommandLineRunner {
 
         userRepository.saveAndFlush(user);
         userRepository.saveAndFlush(user1);
+
+         */
 
 
 

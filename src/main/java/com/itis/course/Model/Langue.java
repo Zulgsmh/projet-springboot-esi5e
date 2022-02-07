@@ -1,9 +1,7 @@
 package com.itis.course.Model;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
@@ -13,14 +11,15 @@ import javax.persistence.*;
 @Slf4j
 @Getter
 @Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Langue {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public long id;
     public String langue;
-
-    public Langue() {}
 
     public Langue(String langue) {
         this.langue = langue;

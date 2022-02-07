@@ -69,16 +69,10 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<Users> optionalUser = userRepository.findByEmail(email);
-
-        if (optionalUser.isEmpty()) {
-            log.info("user does not exists");
-            throw new UsernameNotFoundException(email);
-        }
-
-        UserDetails myUser = User.withUsername(optionalUser.get().getEmail())
-                .password(optionalUser.get().getPassword())
-                .authorities("USER").build();
-
-        return myUser;
+        optionalUser.orElseThrow(() ->
+            new UsernameNotFoundException("User does not exists")
+        );
+        log.info(optionalUser.toString());
+        return optionalUser.get();
     }
 }

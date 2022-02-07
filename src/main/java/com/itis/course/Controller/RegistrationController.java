@@ -10,6 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -26,7 +28,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String userResgistration(@Valid UserForm userForm, BindingResult bindingResult, Model model){
+    public String userResgistration(@Valid UserForm userForm, BindingResult bindingResult, Model model, HttpServletRequest httpServletRequest) throws ServletException {
         if(bindingResult.hasErrors()) {
             model.addAttribute("registrationForm", userForm);
             return "account/register";

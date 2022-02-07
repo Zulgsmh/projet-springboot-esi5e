@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Home</title>
+</head>
+
+<section class="header" th:replace="reusable/bootstrapImport::headerFragment"></section>
+
+<body class="hold-transition">
+<section class="navbar" th:replace="reusable/navbar::navbarFragment"></section>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-3 pt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Publication types</h4>
+                    <p class="card-text">Manage the publication types here.</p>
+                    <a href="#" th:href="@{/admin/categories}" class="card-link btn btn-primary">Manage</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3 pt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Users</h4>
+                    <p class="card-text">Manage the users here.</p>
+                    <a href="#" th:href="@{/admin/users}" class="card-link btn btn-primary">Manage</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3 pt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Publication</h4>
+                    <p class="card-text">Manage the publications here.</p>
+                    <a href="#" th:href="@{/admin/publications}" class="card-link btn btn-primary">Manage</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3 pt-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Langages</h4>
+                    <p class="card-text">Manage the langages here.</p>
+                    <a href="#" th:href="@{/admin/langues}" class="card-link btn btn-primary">Manage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

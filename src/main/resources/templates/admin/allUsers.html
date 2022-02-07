@@ -16,6 +16,7 @@
             crossorigin="anonymous"
     ></script>
 </head>
+<section class="navbar" th:replace="reusable/navbar::navbarFragment"></section>
 <body>
 <h1 class="title-allUsers">Utilisateurs</h1>
 <table class="table table-dark table-striped" style="{{display: flex; align-items: center; justify-content: center;}}">
@@ -36,7 +37,7 @@
         <td th:text="${userr.firstName}"></td>
         <td th:text="${userr.lastName}"></td>
         <td th:text="${userr.accountVerified}"></td>
-        <td style="{{ display: flex; gap: 2px; }}">
+        <td class="actions-table">
             <button type="submit" class="btn btn-primary" th:action="@{/editUser}">Détails</button>
             <form th:action="@{/deleteUser/{id}(id=${userr.id})}">
                 <button type="submit" class="btn btn-danger">Supprimer</button>

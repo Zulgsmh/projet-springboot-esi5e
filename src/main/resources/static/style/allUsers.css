@@ -1,3 +1,9 @@
 .title-allUsers{
     margin-bottom: 20px;
 }
+
+.actions-table {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}

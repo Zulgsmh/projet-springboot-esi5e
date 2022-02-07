@@ -5,80 +5,71 @@
     <link  th:href="@{/style/login.css}" rel="stylesheet"/>
     <link href="../../static/style/login.css" rel="stylesheet" />
 </head>
+<section class="header" th:replace="reusable/bootstrapImport::headerFragment"></section>
 
 <body class="hold-transition login-page">
+<section class="navbar" th:replace="reusable/navbar::navbarFragment"></section>
 
-<div class="login-box">
+<div class="container-md mt-20 container-login">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body login-card-body">
+                    <p class="login-box-msg">Sign in to publish some content</p>
+                    <p th:if="${loginError}" class="error">Wrong user or password</p>
+                    <form th:action="@{/login}" method="post">
+                        <div th:if="${param.error}">
+                            <div class="alert alert-danger">
+                                Invalid username or password.
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
 
-<div class="login-logo"></div>
+                                        <i class="fa-thin fa-envelope"></i>
 
-<div class="card">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
 
-<div class="card-body login-card-body">
+                            <input type="password" name="password" class="form-control" placeholder="Password">
 
-<p class="login-box-msg">Sign in to start your session</p>
+                            <div class="input-group-append">
 
-<p th:if="${loginError}" class="error">Wrong user or password</p>
+                                <div class="input-group-text">
 
-<form th:action="@{/login}" method="post">
 
-<div th:if="${param.error}">
+                                        <i class="fa-solid fa-lock"></i>
 
-<div class="alert alert-danger">
 
-Invalid username or password.
+                                </div>
 
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+
+
+                            <button type="submit" class="btn btn-primary btn-block" style="{{margin-bottom:10px}}">Sign In</button>
+                            <a href="/register">Pas encore enregistré ? Cliquez ici</a>
+
+
+                            <!-- /.col -->
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-</div>
-
-<div class="input-group mb-3">
-
-<input type="email" class="form-control" name="username" placeholder="Email">
-
-<div class="input-group-append">
-
-<div class="input-group-text">
-
-<span class="fas fa-envelope"></span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="input-group mb-3">
-
-<input type="password" name="password" class="form-control" placeholder="Password">
-
-<div class="input-group-append">
-
-<div class="input-group-text">
-
-<span class="fas fa-lock"></span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="row">
-
-<div class="col-4">
-
-<button type="submit" class="btn btn-primary btn-block" style="{{margin-bottom:10px}}">Sign In</button>
-    <a href="/register">Pas encore enregistré ?</a>
-</div>
-
-<!-- /.col -->
-
-</div>
-
-</form>
-</div>
-</div>
 
 </body>
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<section class="header" th:replace="reusable/bootstrapImport::headerFragment"></section>
+
+<body class="hold-transition">
+<section class="navbar" th:replace="reusable/navbar::navbarFragment"></section>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <form th:action="@{/admin/langues/add}" method="post" th:object="${langueForm}">
+                <input type="hidden" name="id" th:field="*{id}">
+                    <div class="form-group">
+                        <label for="langue">Langue</label>
+                        <input id="langue" type="text" class="form-control" required th:field="*{langue}" name="langue">
+                    </div>
+                <button class="btn btn-primary mt-10" type="submit">Créer</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

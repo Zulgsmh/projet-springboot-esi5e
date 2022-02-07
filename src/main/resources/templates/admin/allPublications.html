@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Publications - All</title>
+    <link href="../../static/style/allUsers.css" rel="stylesheet" />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+            integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+            integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+            crossorigin="anonymous"
+    ></script>
+</head>
+<section class="navbar" th:replace="reusable/navbar::navbarFragment"></section>
+<body>
+<h1 class="title-allUsers">Publications</h1>
+<div class="container">
+    <table class="table table-dark table-striped" style="{{display: flex; align-items: center; justify-content: center;}}">
+        <thead>
+        <tr>
+            <th scope="col">Status</th>
+            <th scope="col">Texte</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Type</th>
+            <th scope="col">langue</th>
+            <th scope="col">Validé par</th>
+            <th scope="col">Valider</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Traductions</th>
+        </tr>
+        </thead>
+        <tbody th:each="p : ${publications}">
+        <tr>
+            <td th:text="${p.status}"></td>
+            <td th:text="${p.texte}"></td>
+            <td th:text="${p.auteur.email}"></td>
+            <td th:text="${p.publicationType.name}"></td>
+            <td th:text="${p.langue.langue}"></td>
+            <td th:text="${p.validateBy.getEmail()}"></td>
+            <td class="actions-table">
+                <a  class="btn btn-primary" th:href="@{/admin/validatePublication/{id}(id=${p.id})}">Valider</a>
+                <a  class="btn btn-warning" th:href="@{/admin/unValidatePublication/{id}(id=${p.id})}">Ne pas valider</a>
+            </td>
+            <td>
+                <form th:action="@{/admin/deletePublication/{id}(id=${p.id})}">
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+            </td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/specialist/addTraduction/{id}(id=${p.id})}">Nouvelle traduction</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

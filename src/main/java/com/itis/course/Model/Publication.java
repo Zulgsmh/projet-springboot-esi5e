@@ -1,7 +1,8 @@
 package com.itis.course.Model;
 
-import com.itis.course.Enum.TypePublication;
-import com.mysql.cj.jdbc.Blob;
+
+import com.itis.course.Enum.PublicationStatus;
+import com.itis.course.Enum.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,7 +22,9 @@ public class Publication {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-    private int status;
+
+    private PublicationStatus status;
+
     private String texte;
 
     @ManyToOne
@@ -29,9 +32,9 @@ public class Publication {
     private String source; // d'ou vient le proverbe
     private String sens; // explication du proverbe
 
-    @Column
-    @ElementCollection(targetClass = TypePublication.class)
-    private List<TypePublication> publicationType; // histoire / amour / mort ...
+    @OneToOne
+    @JoinColumn(name = "publicationType_id")
+    private PublicationType publicationType; // histoire / amour / mort ...
 
     @OneToOne
     @JoinColumn(name = "langue_id")
@@ -41,14 +44,12 @@ public class Publication {
     @JoinColumn(name = "validate_by_id")
     private Users validateBy; //must have specialist role
 
-    @Lob
-    @Column(name = "Pdf", length = Integer.MAX_VALUE, nullable = true)
-    private byte[] document; // pdf
+    @OneToMany
+    private List<Traduction> traductionList;
 
-    // TODO : IMPLEMENT IMAGE UPLOAD FOR EACH PUBLICATION
-    // private Blob image;
+    private String imageAssociated;
 
-    public Publication(int status, String texte, Users auteur, String source, String sens, List<TypePublication> publicationType, Langue langue, Users validateBy) {
+    public Publication(PublicationStatus status, String texte, Users auteur, String source, String sens, PublicationType publicationType, Langue langue, Users validateBy) {
         this.status = status;
         this.texte = texte;
         this.auteur = auteur;
@@ -59,7 +60,7 @@ public class Publication {
         this.validateBy = validateBy;
     }
 
-    public Publication(int status, String texte, Users auteur, String source, String sens, List<TypePublication> publicationType, Langue langue, Users validateBy, byte[] document) {
+    public Publication(PublicationStatus status, String texte, Users auteur, String source, String sens, PublicationType publicationType, Langue langue, Users validateBy, String imageAssociated) {
         this.status = status;
         this.texte = texte;
         this.auteur = auteur;
@@ -68,7 +69,7 @@ public class Publication {
         this.publicationType = publicationType;
         this.langue = langue;
         this.validateBy = validateBy;
-        this.document = document;
+        this.imageAssociated = imageAssociated;
     }
 
 }

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Publication-new</title>
+    <link href="../../static/style/InsertPublication.css" rel="stylesheet" />
+    <link th:href="@{/style/insertPublication.css}" rel="stylesheet" />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+            integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+            integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+            crossorigin="anonymous"
+    ></script>
+</head>
+<section class="navbar" th:replace="reusable/navbar::navbarFragment"></section>
+<body class="body-newPub">
+<form class="container-newPub" action="#" th:action="@{/addPublication}" enctype="multipart/form-data" th:object="${publicationForm}" method="post">
+    <h1>Nouvelle publication</h1>
+    <div class="container-inputNewPub">
+        <label for="citation">Citation</label>
+        <div class="input-group flex-nowrap">
+            <input th:field="*{texte}" type="text" id="citation" class="form-control"  required>
+        </div>
+    </div>
+    <div class="container-inputNewPub">
+        <label for="status">Status</label>
+        <div class="input-group flex-nowrap">
+            <input value="New" type="text" id="status" class="form-control" disabled  >
+        </div>
+    </div>
+    <div class="container-inputNewPub">
+        <label for="langue">Langue</label>
+        <div class="input-group flex-nowrap">
+            <select class="form-control selectpicker" th:field="*{langue}" id="langue" required>
+                <option value="">No language selected</option>
+                <option th:each="langue : ${publicationLangues}" th:value="${langue.id}" th:text="${langue.langue}">
+
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="container-inputNewPub">
+        <label for="tag">Tag</label>
+        <select class="form-control selectpicker" th:field="*{tag}" id="tag" required>
+            <option value="">Nothing selected</option>
+            <option th:each="pubType : ${publicationsType}" th:value="${pubType.name}" th:text="${pubType.name}">
+            </option>
+        </select>
+    </div>
+
+    <div class="container-inputNewPub">
+        <label for="sens">Sens de la citation</label>
+        <div class="input-group flex-nowrap">
+            <input th:field="*{sens}" type="text" id="sens" class="form-control" required>
+        </div>
+    </div>
+    <div class="container-inputNewPub">
+        <label for="source">Source</label>
+        <div class="input-group flex-nowrap">
+            <input th:field="*{source}" type="text" id="source" class="form-control"  required>
+        </div>
+    </div>
+    <div class="container-inputNewPub">
+        <div class="custom-file">
+
+            <div class="input-group flex-nowrap">
+                <input id="photo" src="#" type="file" name="pubImage" class="form-control" accept="image/jpeg" required>
+                <label for="photo">Choisissez une image</label>
+            </div>
+            <input type="hidden" name="imgName" th:value="${publicationForm.imageName}">
+            <button class="btn btn-primary" type="submit">Envoyer la citation</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

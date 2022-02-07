@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Langues</title>
+</head>
+<section class="header" th:replace="reusable/bootstrapImport::headerFragment"></section>
+
+<body class="hold-transition">
+<section class="navbar" th:replace="reusable/navbar::navbarFragment"></section>
+
+<div class="container">
+    <a th:href="@{/admin/langues/add}" style="margin: 20px 0" class="btn btn-primary mt-5 mb-5">
+        Add Langue
+    </a>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">langue</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Update</th>
+            </tr>
+        </thead>
+
+        <tr th:each="langue : ${langues}">
+            <th scope="row" th:text="${langue.id}"></th>
+            <td th:text="${langue.langue}"></td>
+
+            <td><a href="#" th:href="@{/admin/langues/delete/{id}(id=${langue.id})}" class="btn btn-danger">Delete</a></td>
+            <td><a href="#" th:href="@{/admin/langues/update/{id}(id=${langue.id})}" class="btn btn-warning">Update</a></td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>

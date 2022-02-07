@@ -1,0 +1,25 @@
+.body-newPub{
+    min-height: 100vh;
+    width: 100%;
+      background: url("../images/insert-citation.jpg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+}
+
+.container-newPub {
+    position: absolute;
+    top:50%;
+    left: 10%;
+    transform: translateY(-50%);
+    width: 40%;
+    border-radius: 15px;
+    height: auto;
+    padding: 15px;
+    background: white;
+    box-shadow: 5px 5px 5px grey;
+}
+
+.container-inputNewPub {
+margin-bottom: 15px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Publication - details</title>
+    <link th:href="@{/style/publicationDetails.css}" rel="stylesheet" />
+</head>
+<section class="header" th:replace="reusable/bootstrapImport::headerFragment"></section>
+<body class="hold-transition">
+<section class="navbar" th:replace="reusable/navbar::navbarFragment"></section>
+
+
+<div class="container container-md" th:object="${publication}">
+    <div class="row">
+        <div class="col">
+            <h2 th:text="${publication.langue.langue}"></h2>
+            <br/>
+            <label><strong>Citation</strong></label>
+            <p th:text="${publication.texte}"></p>
+            <br/>
+            <label><strong>Sens</strong></label>
+            <p th:text="${publication.sens}"></p>
+            <br/>
+            <label><strong>Source</strong> </label>
+            <p th:text="${publication.source}"></p>
+            <br/>
+            <label><strong>Ecrit par :</strong></label>
+            <label th:text="${publication.auteur.getFullName()}"></label>
+        </div>
+        <div class="col col-traductions">
+            <h3>Traductions</h3>
+            <div class="card-traduction">
+                <h5>Langue </h5>
+                <p>Traduction</p>
+                <p>Sens</p>
+                <p>Traducteur</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
