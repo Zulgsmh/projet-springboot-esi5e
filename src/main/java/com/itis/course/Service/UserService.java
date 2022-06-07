@@ -29,6 +29,11 @@ public class UserService implements UserDetailsService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
     public List<Users> retrieveAll() {
         return userRepository.findAll();
     }
@@ -39,7 +44,7 @@ public class UserService implements UserDetailsService {
         BeanUtils.copyProperties(userForm, user);
         encodePassword(user, userForm);
         user.setAccountVerified(true);
-        user.setRoles(new ArrayList<Role>(Collections.singleton(Role.USER)));
+        user.setRoles(new ArrayList<>(Collections.singleton(Role.USER)));
         userRepository.save(user);
     }
 

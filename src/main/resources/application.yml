@@ -15,14 +15,15 @@ spring:
   ressources:
     static-locations: file:src/main/ressources/static/
     cache-period: 0
-  jpa:
-    show-sql: true
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    hibernate.ddl-auto: update
-  datasource:
-    url: jdbc:mysql://localhost:3306/dbProjectSpringBoot?useSSL=false&serverTimezone=UTC
-    driverClassName: com.mysql.jdbc.Driver
-    username: root
-    password: root
+
+  #jpa:
+  #  show-sql: true
+  #  database-platform: org.hibernate.dialect.MySQL8Dialect
+  #  hibernate.ddl-auto: update
+  #datasource:
+  #  url: jdbc:mysql://localhost:3306/dbProjectSpringBoot?useSSL=false&serverTimezone=UTC
+  #  driverClassName: com.mysql.jdbc.Driver
+  #  username: root
+  #  password: root
 
 

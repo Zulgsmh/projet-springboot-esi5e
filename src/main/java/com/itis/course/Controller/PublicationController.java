@@ -44,7 +44,6 @@ public class PublicationController {
     @Autowired
     LangueService langueService;
 
-
     @Autowired
     PublicationTypeService publicationTypeService;
 

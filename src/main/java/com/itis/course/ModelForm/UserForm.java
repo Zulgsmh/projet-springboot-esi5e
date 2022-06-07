@@ -23,4 +23,13 @@ public class UserForm implements Serializable {
     @NotEmpty(message = "Password can not be empty")
     private String password;
 
+    public UserForm() {
+    }
+
+    public UserForm(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
 }
