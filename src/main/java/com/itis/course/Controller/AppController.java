@@ -18,13 +18,16 @@ import java.util.List;
 public class AppController {
 
     @Autowired
-    PublicationService publicationService;
+    final private PublicationService publicationService;
 
     @Autowired
-    PublicationTypeService publicationTypeService;
+    final private PublicationTypeService publicationTypeService;
 
-    @Autowired
-    UserService userService;
+
+    public AppController(PublicationService publicationService, PublicationTypeService publicationTypeService) {
+        this.publicationService = publicationService;
+        this.publicationTypeService = publicationTypeService;
+    }
 
     @RequestMapping("/")
     public String viewHomePage(Model model){
